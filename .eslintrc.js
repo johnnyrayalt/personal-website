@@ -1,5 +1,7 @@
 const path = require('path');
 
+// TODO:: typescript only rules are applying to js files, use override to fix
+
 module.exports = {
 	ignorePatterns: ['.eslintrc.js'],
 	parser: '@typescript-eslint/parser',
@@ -50,17 +52,12 @@ module.exports = {
 		],
 		'@typescript-eslint/no-inferrable-types': 'off',
 		'@typescript-eslint/restrict-template-expressions': 'off',
+		'@typescript-eslint/no-explicit-any': 'off',
+		'@typescript-eslint/no-unsafe-assignment': 'off',
+		'@typescript-eslint/no-unsafe-member-access': 'off',
+		'@typescript-eslint/no-unsafe-call': 'off',
 		'no-irregular-whitespace': 'error',
 		'no-empty-character-class': 'error',
-		// 'sort-imports': ['error', {
-		// 	'ignoreCase': true,
-		// 	'memberSyntaxSortOrder': [
-		// 		'single',
-		// 		'multiple',
-		// 		'all',
-		// 		'none',],
-		// 	'allowSeparatedGroups': true
-		// }],
 		'sort-imports-es6-autofix/sort-imports-es6': [
 			'error',
 			{
