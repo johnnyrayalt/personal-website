@@ -17,37 +17,63 @@ const Tensorflow = () => {
 
 	const loadFaceMesh = async () => await faceLandmarksDetection.load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh)
 
-	const detectFace = async (model) => {
+	const detectFace = (face, ctx) => {
+		const videoWidth = webcamRef.current.video.videoWidth
+		const videoHeight = webcamRef.current.video.videoHeight
+
+		webcamRef.current.video.width = videoWidth
+		webcamRef.current.video.height = videoHeight
+
+		canvasRef.current.width = videoWidth
+		canvasRef.current.height = videoHeight
+
+		const loop = () => {
+			console.log('did we make ir')
+			return Promise.resolve(() => {
+				console.log('loop1')
+				requestAnimationFrame(() => drawMesh(face, ctx))
+				return requestAnimationFrame(() => detectFace(face, ctx))
+			})
+		}
+
+		void loop()
+	}
+
+	const getContext = async (model) => {
 		if (
 			webcamRef.current !== undefined &&
 			webcamRef.current !== null &&
 			webcamRef.current.video.readyState === 4
 		) {
-			const video = webcamRef.current.video
-			const videoWidth = webcamRef.current.video.videoWidth
-			const videoHeight = webcamRef.current.video.videoHeight
-
-			webcamRef.current.video.width = videoWidth
-			webcamRef.current.video.height = videoHeight
-
-			canvasRef.current.width = videoWidth
-			canvasRef.current.height = videoHeight
-
-			const face = await model.estimateFaces({ input: video })
-
+			const video = await webcamRef.current.video
+			const predictions = await model.estimateFaces({ input: video })
 			const ctx = canvasRef.current.getContext('2d')
+			return { predictions, ctx }
+		}
+	}
 
-			requestAnimationFrame(() => drawMesh(face, ctx))
+	const run = async () => {
+		try {
+			const faceMesh = await faceLandmarksDetection.load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh)
+			const context = await getContext(faceMesh)
+			if (context.predictions !== undefined && context.ctx !== undefined && faceMesh !== undefined) {
+				console.log('try', context.predictions, context.ctx)
+				return requestAnimationFrame(() => detectFace(context.predictions, context.ctx))
+			}
+			console.log('try', 'bummer')
+		} catch (e) {
+			const faceMesh = await faceLandmarksDetection.load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh)
+			const context = await getContext(faceMesh)
+			if (context.predictions !== undefined && context.ctx !== undefined && faceMesh !== undefined) {
+				console.log('catch', context.predictions, context.ctx)
+				return requestAnimationFrame(() => detectFace(context.predictions, context.ctx))
+			}
+			console.log('catch', 'bummer')
 		}
 	}
 
 	useEffect(() => {
-		loadFaceMesh().then(model => {
-			// eslint-disable-next-line @typescript-eslint/no-misused-promises
-			setInterval(async () => {
-				void await detectFace(model)
-			}, 1)
-		}, [])
+		void run()
 	})
 
 	return (
