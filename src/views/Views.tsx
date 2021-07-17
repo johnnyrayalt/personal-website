@@ -2,6 +2,7 @@ import About from './about'
 import Home from './home'
 import ProjectPage from './projectPage'
 import React from 'react'
+import Tensorflow from './tensorflow'
 import Works from './works'
 import { IMAGE_ROOTS } from '../assets/constants'
 import { Route, Switch } from 'react-router-dom'
@@ -40,6 +41,12 @@ const Views = (): JSX.Element => {
 				exact
 				path='/about'
 				component={() => <About />}
+			/>
+
+			<Route
+				exact
+				path='/sandbox'
+				component={() => <Tensorflow />}
 			/>
 
 		</Switch>
