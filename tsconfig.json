@@ -21,7 +21,10 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src",
-    "src/assets"
+    "*.tsx",
+    "*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".eslintrc.js"
   ]
 }

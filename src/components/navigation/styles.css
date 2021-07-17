@@ -1,0 +1,35 @@
+#navigation-container {
+    background: linear-gradient(blue, transparent);
+    height: 5em;
+    width: 100%;
+}
+
+.navigation-links-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+/* Main Nav */
+.nav-ul {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-li {
+    display: inline-block;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+/* Sub Nav */
+.sub-nav-ul {
+    position: fixed;
+    padding-left: 30px;
+}
+
+.btn {
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+}
