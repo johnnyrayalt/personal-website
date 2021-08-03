@@ -2650,7 +2650,7 @@ const drawPath = (ctx, points) => {
 	}
 
 	region.closePath()
-	// ctx.strokeStyle = 'aqua'
+	ctx.strokeStyle = 'aqua'
 	ctx.stroke(region)
 }
 
@@ -2660,22 +2660,25 @@ export const drawMesh = (predictions, ctx) => {
 		predictions.forEach(prediction => {
 			const keyPoints = prediction.scaledMesh
 
-			for (let i = 0; i < TRIANGULATION.length / 3; i++) {
-				const points = [
-					TRIANGULATION[i * 3],
-					TRIANGULATION[i * 3 + 1],
-					TRIANGULATION[i * 3 + 2]
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-return
-				].map(i => keyPoints[i])
-				drawPath(ctx, points)
-			}
+			// for (let i = 0; i < TRIANGULATION.length / 3; i++) {
+			// 	const points = [
+			// 		TRIANGULATION[i * 3],
+			// 		TRIANGULATION[i * 3 + 1],
+			// 		TRIANGULATION[i * 3 + 2]
+			// 		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+			// 	].map(i => keyPoints[i])
+			// 	// drawPath(ctx, points)
+			// }
 
 			for (let i = 0; i < keyPoints.length; i++) {
 				const x = keyPoints[i][0]
 				const y = keyPoints[i][1]
 
 				ctx.beginPath()
-				ctx.arc(x, y, 1, 0, 3 * Math.PI)
+				ctx.arc(x, y , 1, 0, 3 * Math.PI)
+				for (let i = 1; i <= 5; i++) {
+					ctx.arc((x * i - 1)/-2, (y * i - 1)/-2, 1, 0, 3 * Math.PI)
+				}
 				ctx.fillStyle = 'aqua'
 				ctx.fill()
 			}
