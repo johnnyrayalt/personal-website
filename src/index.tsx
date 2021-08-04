@@ -3,8 +3,22 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
+import { STORAGE_KEYS } from './assets/constants'
+import { StorageUtil } from './utils/storage/StorageUtil'
+import { v4 as UUID} from 'uuid'
 import { ViewportProvider } from './utils/useViewportHook'
 import './index.css'
+
+const newUserToken = UUID()
+if (StorageUtil.getItem(STORAGE_KEYS.userToken) !== null) {
+	StorageUtil.removeExpiredItems()
+
+	if (StorageUtil.getItem(STORAGE_KEYS.userToken) === null) {
+		StorageUtil.addItem(STORAGE_KEYS.userToken, newUserToken)
+	}
+} else {
+	StorageUtil.addItem(STORAGE_KEYS.userToken, newUserToken)
+}
 
 ReactDOM.render(
 	<ViewportProvider>
