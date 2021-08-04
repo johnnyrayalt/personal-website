@@ -97,3 +97,6 @@ export const PROFESSIONAL: Schema = {
 
 export const IMAGE_SIZE_DEFAULTS: string[] = ['500', '750', '864']
 export const MONTHS: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+export const STORAGE_KEYS: {[name: string]: string } = {
+	userToken: 'userToken'
+}
