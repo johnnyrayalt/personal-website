@@ -15,14 +15,12 @@ const Project: FC = (): JSX.Element => {
 	useEffect(() => {
 	 if (!project) return
 
-	 const getProjectRoot = async (): Promise<void> =>  {
+	 (async (): Promise<void> => {
 		 const projectRoot = project.toString();
 
 		 checkSlug(projectRoot, [IMAGE_ROOTS.art, IMAGE_ROOTS.professional], setSlug);
-	 };
-	 getProjectRoot().then(() => {
-		 return;
-	 });
+	 })()
+		 .then(() => {return});
 	}, [project])
 
 	return (
