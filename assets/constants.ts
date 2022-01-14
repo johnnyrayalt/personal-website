@@ -16,16 +16,12 @@ const EXPANDED_STATE_KEYS: StringObj = {
 	SOCIALS: 'socials',
 }
 
-const IMAGE_KV: { [name: string]: StringObj } = {
-	art: {
+const IMAGE_KV: StringObj = {
 		hapticParadigm: 'haptic_paradigm',
 		alphaDecay: 'alpha_decay',
 		optimizedLivingSpaces: 'optimized_living_spaces',
-	},
-	professional: {
 		cdkGlobal: 'cdk_global',
 		trendCapital: 'trend_capital',
-	},
 }
 
 const IMAGE_ROOTS: StringObj = {
@@ -35,7 +31,7 @@ const IMAGE_ROOTS: StringObj = {
 
 const ART: Schema[] = [
 	{
-		key: IMAGE_KV.art.hapticParadigm,
+		key: IMAGE_KV.hapticParadigm,
 		name: 'Haptic Paradigm',
 		year: '2020',
 		description: [
@@ -47,7 +43,7 @@ const ART: Schema[] = [
 		link: 'haptic-paradigm.com',
 	},
 	{
-		key: IMAGE_KV.art.alphaDecay,
+		key: IMAGE_KV.alphaDecay,
 		name: 'Alpha Decay',
 		year: '2013',
 		description: [
@@ -58,7 +54,7 @@ const ART: Schema[] = [
 		hasImages: true,
 	},
 	{
-		key: IMAGE_KV.art.optimizedLivingSpaces,
+		key: IMAGE_KV.optimizedLivingSpaces,
 		name: 'Optimized Living Spaces #1',
 		year: '2012',
 		description: [`Acrylic paint, screen print, and graphite on BFK Rives paper.`],
@@ -69,7 +65,7 @@ const ART: Schema[] = [
 
 const PROFESSIONAL: Schema[] = [
 	{
-		key: IMAGE_KV.professional.cdkGlobal,
+		key: IMAGE_KV.cdkGlobal,
 		name: 'CDK Global',
 		year: '2020-2021',
 		description: [
@@ -80,7 +76,7 @@ const PROFESSIONAL: Schema[] = [
 		link: 'www.cdkglobal.com',
 	},
 	{
-		key: IMAGE_KV.professional.trendCapital,
+		key: IMAGE_KV.trendCapital,
 		name: 'Trend Capital Holdings, Inc.',
 		year: '2019',
 		description: [
