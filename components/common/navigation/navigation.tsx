@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
+import Link from 'next/link';
 import { BooleanObj } from '../../../types/BooleanObj';
-import { EXPANDED_STATE_KEYS } from '../../../assets/constants';
+import { EXPANDED_STATE_KEYS, IMAGE_ROOTS } from '../../../assets/constants';
 
 const Navigation: FC = (): JSX.Element => {
 	const defaultExpanded: BooleanObj = {
@@ -31,33 +32,26 @@ const Navigation: FC = (): JSX.Element => {
 							{expanded.works && (
 								<ul className='sub-nav-ul'>
 									<li className='sub-nav-li'>
-										{/*<link*/}
-										{/*	className='sub-nav-link link'*/}
-										{/*	rel='/works/art'*/}
-										{/*	onClick={() => resetExpandedOnClick()}*/}
-										{/*>*/}
-										{/*	.art()*/}
-										{/*</link>*/}
-										art
+										<Link href={`/projects/${IMAGE_ROOTS.art}`} passHref>
+											<div className='sub-nav-link link' onClick={() => resetExpandedOnClick()}>
+												.art();
+											</div>
+										</Link>
 									</li>
 									<li className='sub-nav-li'>
-										{/*<link*/}
-										{/*	className='sub-nav-link link'*/}
-										{/*	rel='/works/professional'*/}
-										{/*	onClick={() => resetExpandedOnClick()}*/}
-										{/*>*/}
-										{/*	.professional()*/}
-										{/*</link>*/}
-										professional
+										<Link href={`/projects/${IMAGE_ROOTS.professional}`} passHref>
+											<div className='sub-nav-link link' onClick={() => resetExpandedOnClick()}>
+												.professional();
+											</div>
+										</Link>
 									</li>
 								</ul>
 							)}
 						</li>
 						<li className='nav-li'>
-							{/*<link className='link' rel='/about'>*/}
-							{/*	.about()*/}
-							{/*</link>*/}
-							about
+							<Link href={`/about`} passHref>
+								<div>about();</div>
+							</Link>
 						</li>
 						<li className='nav-li'>
 							<button onClick={() => handleChangeExpanded(EXPANDED_STATE_KEYS.SOCIALS)} className='link btn'>
@@ -73,7 +67,7 @@ const Navigation: FC = (): JSX.Element => {
 											target='_blank'
 											onClick={() => resetExpandedOnClick()}
 										>
-											.linkedin(&#x02197;)
+											.linkedin(&#x02197;);
 										</a>
 									</li>
 									<li className='sub-nav-li'>
@@ -82,7 +76,7 @@ const Navigation: FC = (): JSX.Element => {
 											href='mailto:johnnyrayalt@gmail.com'
 											onClick={() => resetExpandedOnClick()}
 										>
-											.email(&#x02197;)
+											.email(&#x02197;);
 										</a>
 									</li>
 								</ul>
@@ -90,7 +84,7 @@ const Navigation: FC = (): JSX.Element => {
 						</li>
 						<li className='nav-li'>
 							<a className='link' href='https://github.com/johnnyrayalt' rel='noopener noreferrer' target='_blank'>
-								.github(&#x02197;)
+								.github(&#x02197;);
 							</a>
 						</li>
 					</ul>
