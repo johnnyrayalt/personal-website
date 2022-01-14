@@ -27,21 +27,21 @@ const Navigation: FC = (): JSX.Element => {
 					<ul className='nav-ul'>
 						<li className='nav-li'>
 							<button onClick={() => handleChangeExpanded(EXPANDED_STATE_KEYS.WORKS)} className='link btn'>
-								.works(↳)
+								works(↳)
 							</button>
 							{expanded.works && (
 								<ul className='sub-nav-ul'>
 									<li className='sub-nav-li'>
 										<Link href={`/projects/${IMAGE_ROOTS.art}`} passHref>
 											<div className='sub-nav-link link' onClick={() => resetExpandedOnClick()}>
-												.art();
+												.art(→);
 											</div>
 										</Link>
 									</li>
 									<li className='sub-nav-li'>
 										<Link href={`/projects/${IMAGE_ROOTS.professional}`} passHref>
 											<div className='sub-nav-link link' onClick={() => resetExpandedOnClick()}>
-												.professional();
+												.professional(→);
 											</div>
 										</Link>
 									</li>
@@ -50,12 +50,12 @@ const Navigation: FC = (): JSX.Element => {
 						</li>
 						<li className='nav-li'>
 							<Link href={`/about`} passHref>
-								<div>about();</div>
+								<div>about(→);</div>
 							</Link>
 						</li>
 						<li className='nav-li'>
 							<button onClick={() => handleChangeExpanded(EXPANDED_STATE_KEYS.SOCIALS)} className='link btn'>
-								.contacts(↳)
+								contacts(↳)
 							</button>
 							{expanded.socials && (
 								<ul className='sub-nav-ul'>
@@ -84,7 +84,7 @@ const Navigation: FC = (): JSX.Element => {
 						</li>
 						<li className='nav-li'>
 							<a className='link' href='https://github.com/johnnyrayalt' rel='noopener noreferrer' target='_blank'>
-								.github(&#x02197;);
+								github(&#x02197;);
 							</a>
 						</li>
 					</ul>
