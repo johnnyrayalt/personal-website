@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import WorksList from './WorksList';
+import WorksList from '../worksList/WorksList';
 import { ART, IMAGE_ROOTS, PROFESSIONAL, Schema } from '../../assets/constants';
 
 interface Props {
