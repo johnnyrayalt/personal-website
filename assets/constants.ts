@@ -1,15 +1,13 @@
 import { StringObj } from '../types/StringObj';
 
 export interface Schema {
-	[name: string]: {
-		key: string;
-		name: string;
-		year: string;
-		link?: string;
-		description: string[];
-		altText: string;
-		hasImages: boolean;
-	}
+	key: string;
+	name: string;
+	year: string;
+	description: string[];
+	altText: string;
+	hasImages: boolean;
+	link?: string;
 }
 
 const EXPANDED_STATE_KEYS: StringObj = {
@@ -35,20 +33,20 @@ const IMAGE_ROOTS: StringObj = {
 	professional: 'professional',
 }
 
-const ART: Schema = {
-	hapticParadigm: {
+const ART: Schema[] = [
+	{
 		key: IMAGE_KV.art.hapticParadigm,
 		name: 'Haptic Paradigm',
 		year: '2020',
-		link: 'haptic-paradigm.com',
 		description: [
 			`Haptic Paradigm is an ongoing curatorial and artistic collaboration with Chloe Alexandra Thompson. Conceptualized by Thompson as a digital, communal, generative sound installation, Haptic Paradigm is a websocket application with a series of Node.js websocket servers with a React front end.`,
 			`Haptic Paradigm takes input from one user on the website at a time, with all other visitors placed in watch mode where they can view what the controlling user is manipulating the controls on screen. This is achieved by running two Websocket servers simultaneously. The front end sends input messages to a relay server, which then turns that data around and sends it back to the front end to move the on screen controls in real time for everyone in watch mode. The data is also sent to a remote server where it is processed and fed into a MAXMSP patch to generate music, sound, and visuals. That output is then broadcast using OBS to Twitch.tv. A video player is embedded in the site so everyone can see and hear the output being produced.`,
 		],
 		altText: '',
 		hasImages: false,
+		link: 'haptic-paradigm.com',
 	},
-	alphaDecay: {
+	{
 		key: IMAGE_KV.art.alphaDecay,
 		name: 'Alpha Decay',
 		year: '2013',
@@ -59,7 +57,7 @@ const ART: Schema = {
 		altText: 'A room with 4 discrete sculptures and 4 poems. Each sculpture is a combination of ready made objects - such as dog beds and flat screen televisions - with some fabricated parts, such as wooden additions.',
 		hasImages: true,
 	},
-	optimizedLivingSpaces: {
+	{
 		key: IMAGE_KV.art.optimizedLivingSpaces,
 		name: 'Optimized Living Spaces #1',
 		year: '2012',
@@ -67,35 +65,34 @@ const ART: Schema = {
 		altText: 'A mixed media art work with silk screen, acrylic paint, and pencil on paper. Depicts an abstract geometric shape in marbled texture and a drawing of a twin bed.',
 		hasImages: true,
 	},
-}
+]
 
-const PROFESSIONAL: Schema = {
-	cdkGlobal: {
+const PROFESSIONAL: Schema[] = [
+	{
 		key: IMAGE_KV.professional.cdkGlobal,
 		name: 'CDK Global',
 		year: '2020-2021',
-		link: 'www.cdkglobal.com',
 		description: [
 			`CDK Global is an integrated software solutions company that specializes in the auto dealership and construction industries. My role here is to work on building API’s in both Java and JavaScript using Spring and Node.js respectively, as well as writing components in React for a payment gateway integration UI.`,
 		],
 		altText: '',
 		hasImages: false,
+		link: 'www.cdkglobal.com',
 	},
-
-	trendCapital: {
+	{
 		key: IMAGE_KV.professional.trendCapital,
 		name: 'Trend Capital Holdings, Inc.',
 		year: '2019',
-		link: 'trendcapital.com',
 		description: [
 			`Trend Capital Holdings, Inc. is a financial tech company focused on lead generation, connecting small lenders with people in financial need. My time was focused primarily on the creation of an engine capable of generating static websites from templates and the creation of an anti-corruption API layer between the client and server.`,
 		],
 		altText: 'Screen shots from three websites I worked on while employed by Trend Capital',
 		hasImages: true,
+		link: 'trendcapital.com',
 	},
-}
+]
 
 const IMAGE_SIZE_DEFAULTS: string[] = ['500', '750', '864']
 const MONTHS: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-export default {EXPANDED_STATE_KEYS, IMAGE_KV, IMAGE_ROOTS, ART, PROFESSIONAL, IMAGE_SIZE_DEFAULTS, MONTHS};
+export {EXPANDED_STATE_KEYS, IMAGE_KV, IMAGE_ROOTS, ART, PROFESSIONAL, IMAGE_SIZE_DEFAULTS, MONTHS};
