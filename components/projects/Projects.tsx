@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import WorksList from './WorksList';
-import c, { Schema } from '../../assets/constants';
+import { ART, IMAGE_ROOTS, PROFESSIONAL, Schema } from '../../assets/constants';
 
 interface Props {
 	worksRootIndex: string,
@@ -9,14 +9,14 @@ interface Props {
 const Projects: FC<Props> = (Props): JSX.Element => {
 	const { worksRootIndex } = Props;
 
-	const handleWorksListSelection = (): Schema => {
-		let schema: Schema = {} as Schema;
+	const handleWorksListSelection = (): Schema[] => {
+		let schema: Schema[] = [];
 		switch (worksRootIndex) {
-			case (c.IMAGE_ROOTS.art):
-				schema = c.ART;
+			case (IMAGE_ROOTS.art):
+				schema = ART;
 				break;
-			case (c.IMAGE_ROOTS.professional):
-				schema = c.PROFESSIONAL
+			case (IMAGE_ROOTS.professional):
+				schema = PROFESSIONAL
 				break;
 		}
 
