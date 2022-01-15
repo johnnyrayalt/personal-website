@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
-import { ART, IMAGE_ROOTS, MONTHS, PROFESSIONAL, Schema } from '../../assets/constants';
-import { useViewport } from '../../utils/useViewportHook';
+import { WORKS_LIST, MONTHS } from '../../../assets/constants';
+import { useViewport } from '../../../utils/useViewportHook';
 import Link from 'next/link';
 
 interface Props {
@@ -11,24 +11,19 @@ const ProjectsList: FC<Props> = (Props): JSX.Element => {
 	const { worksRootIndex } = Props;
 	const widthBreakPoint: number = 730;
 	const { width } = useViewport();
-	const [worksList, setWorksList] = useState<Schema[]>([]);
+	const [worksList, setWorksList] = useState<{ name: string, key: string }[]>([]);
 
 	useEffect(() => {
 		const handleWorksListSelection = async (): Promise<void> => {
-			let schema: Schema[] = [];
-			switch (worksRootIndex) {
-				case (IMAGE_ROOTS.art):
-					schema = ART;
-					break;
-				case (IMAGE_ROOTS.professional):
-					schema = PROFESSIONAL
-					break;
-			}
+			const schema = WORKS_LIST
+				.filter(work => work.type === worksRootIndex)
+				.map(work => ({ name: work.name, key: work.key }));
+
 			if (!schema) throw new Error(`No schema found for ${worksRootIndex}! How'd that happen?`)
 			await setWorksList(schema);
 		}
 		handleWorksListSelection().then(() => {return});
-	})
+	}, [worksRootIndex])
 
 	const fileName = (name: string): JSX.Element => (
 		<span className='text mobile-works-list' style={{
@@ -65,7 +60,7 @@ const ProjectsList: FC<Props> = (Props): JSX.Element => {
 		return worksList.map(project => (
 			<li className='works-list-li' key={project.key}>
 				<Link
-					href={`/projects/${worksRootIndex}/${project.key}`}
+					href={{pathname: '/projects/[root]/[slug]', query: { root: `${worksRootIndex}`, slug: `${project.key}` }}}
 					passHref
 				>
 					<div>
@@ -89,7 +84,8 @@ const ProjectsList: FC<Props> = (Props): JSX.Element => {
 				<ul className='works-list-ul'>
 					{handleSettingWorksList()}
 				</ul>
-			</div>		</div>
+			</div>
+		</div>
 	)
 }
 

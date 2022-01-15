@@ -3,11 +3,12 @@ import MastHeader from '../../components/common/mastHeader/MastHeader';
 import checkSlug from '../../utils/checkSlug';
 import ErrorPage from 'next/error';
 import { IMAGE_ROOTS } from '../../assets/constants';
-import ProjectsList from '../../components/projects/ProjectsList';
-import { router } from 'next/client';
+import ProjectsList from '../../components/projects/projectList/ProjectsList';
+import { useRouter } from 'next/router';
 
 const Projects: FC = (): JSX.Element => {
- 	const { projects } = router.query;
+	const router = useRouter();
+	const { projects } = router.query;
 
 	const [slug, setSlug] = useState<{err: boolean, code: number, slug: string}>({ err: false, code: 200, slug: ''});
 
@@ -16,7 +17,7 @@ const Projects: FC = (): JSX.Element => {
 
 	 const worksRootIndex = (): void => {
 		 const projectRoot = projects.toString();
-		 checkSlug(projectRoot, [IMAGE_ROOTS.art, IMAGE_ROOTS.professional], setSlug);
+		 checkSlug(projectRoot, [IMAGE_ROOTS.ART, IMAGE_ROOTS.PROFESSIONAL], setSlug);
 	 }
 
 		worksRootIndex();

@@ -1,7 +1,6 @@
-import { StringObj } from '../types/StringObj';
-
 export interface Schema {
 	key: string;
+	type: string;
 	name: string;
 	year: string;
 	description: string[];
@@ -10,28 +9,29 @@ export interface Schema {
 	link?: string;
 }
 
-const EXPANDED_STATE_KEYS: StringObj = {
-	MAIN: 'main',
-	WORKS: 'works',
-	SOCIALS: 'socials',
+enum EXPANDED_STATE_KEYS {
+	MAIN = 'main',
+	WORKS = 'works',
+	SOCIALS = 'socials',
 }
 
-const IMAGE_KV: StringObj = {
-		hapticParadigm: 'haptic_paradigm',
-		alphaDecay: 'alpha_decay',
-		optimizedLivingSpaces: 'optimized_living_spaces',
-		cdkGlobal: 'cdk_global',
-		trendCapital: 'trend_capital',
+enum IMAGE_ROOTS {
+	ART = 'art',
+	PROFESSIONAL = 'professional'
 }
 
-const IMAGE_ROOTS: StringObj = {
-	art: 'art',
-	professional: 'professional',
+enum IMAGE_KV {
+	hapticParadigm = 'haptic_paradigm',
+	alphaDecay = 'alpha_decay',
+	optimizedLivingSpaces = 'optimized_living_spaces',
+	cdkGlobal = 'cdk_global',
+	trendCapital = 'trend_capital',
 }
 
-const ART: Schema[] = [
+const WORKS_LIST: Schema[] = [
 	{
 		key: IMAGE_KV.hapticParadigm,
+		type: IMAGE_ROOTS.ART,
 		name: 'Haptic Paradigm',
 		year: '2020',
 		description: [
@@ -44,6 +44,7 @@ const ART: Schema[] = [
 	},
 	{
 		key: IMAGE_KV.alphaDecay,
+		type: IMAGE_ROOTS.ART,
 		name: 'Alpha Decay',
 		year: '2013',
 		description: [
@@ -55,17 +56,16 @@ const ART: Schema[] = [
 	},
 	{
 		key: IMAGE_KV.optimizedLivingSpaces,
+		type: IMAGE_ROOTS.ART,
 		name: 'Optimized Living Spaces #1',
 		year: '2012',
 		description: [`Acrylic paint, screen print, and graphite on BFK Rives paper.`],
 		altText: 'A mixed media art work with silk screen, acrylic paint, and pencil on paper. Depicts an abstract geometric shape in marbled texture and a drawing of a twin bed.',
 		hasImages: true,
 	},
-]
-
-const PROFESSIONAL: Schema[] = [
 	{
 		key: IMAGE_KV.cdkGlobal,
+		type: IMAGE_ROOTS.PROFESSIONAL,
 		name: 'CDK Global',
 		year: '2020-2021',
 		description: [
@@ -77,6 +77,7 @@ const PROFESSIONAL: Schema[] = [
 	},
 	{
 		key: IMAGE_KV.trendCapital,
+		type: IMAGE_ROOTS.PROFESSIONAL,
 		name: 'Trend Capital Holdings, Inc.',
 		year: '2019',
 		description: [
@@ -91,4 +92,4 @@ const PROFESSIONAL: Schema[] = [
 const IMAGE_SIZE_DEFAULTS: string[] = ['500', '750', '864']
 const MONTHS: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-export {EXPANDED_STATE_KEYS, IMAGE_KV, IMAGE_ROOTS, ART, PROFESSIONAL, IMAGE_SIZE_DEFAULTS, MONTHS};
+export {EXPANDED_STATE_KEYS, IMAGE_KV, IMAGE_ROOTS, WORKS_LIST, IMAGE_SIZE_DEFAULTS, MONTHS};

@@ -32,14 +32,14 @@ const Navigation: FC = (): JSX.Element => {
 							{expanded.works && (
 								<ul className='sub-nav-ul'>
 									<li className='sub-nav-li'>
-										<Link href={`/projects/${IMAGE_ROOTS.art}`} passHref>
+										<Link href={{ pathname: '/projects/[slug]', query: { slug: `${IMAGE_ROOTS.ART}` }}} passHref>
 											<div className='sub-nav-link link' onClick={() => resetExpandedOnClick()}>
 												.art(→);
 											</div>
 										</Link>
 									</li>
 									<li className='sub-nav-li'>
-										<Link href={`/projects/${IMAGE_ROOTS.professional}`} passHref>
+										<Link href={{ pathname: '/projects/[slug]', query: { slug: `${IMAGE_ROOTS.PROFESSIONAL}` }}} passHref>
 											<div className='sub-nav-link link' onClick={() => resetExpandedOnClick()}>
 												.professional(→);
 											</div>
