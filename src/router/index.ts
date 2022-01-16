@@ -1,0 +1,34 @@
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import Home from '../views/Home.vue';
+
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('../views/About.vue'),
+  },
+  {
+    path: '/works/:worksRoot',
+    name: 'Works',
+    props: true,
+    component: () => import('../views/WorksList.vue'),
+  },
+  {
+    path: '/works/:worksRoot/:work',
+    name: 'Work',
+    props: true,
+    component: () => import('../views/Work.vue'),
+  },
+];
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
+
+export default router;
