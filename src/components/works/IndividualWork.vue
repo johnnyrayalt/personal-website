@@ -3,7 +3,7 @@
     <WorkInfo :details="{ name: workData.name, year: workData.year }" />
     <WorkDescription :description="workData.description" />
     <WorkLink v-if="workData.link !== 'none'" :link="workData.link" />
-    <ImageScroll v-if="workData.hasImages" :images="dummyimages" :alt-text="workData.altText" />
+    <ImageScroll v-if="workData.hasImages" :images="images" :alt-text="workData.altText" />
   </div>
 </template>
 
@@ -26,28 +26,6 @@ import { ProjectSchema } from '@/assets/constants';
 })
 export default class IndividualWork extends Vue {
   @Prop() workData!: ProjectSchema;
-
-  dummyimages: { id: number; url: string }[] = [
-    {
-      id: 0,
-      url: 'https://picsum.photos/200/300?random=1',
-    },
-    {
-      id: 1,
-      url: 'https://picsum.photos/200/300?random=1',
-    },
-    {
-      id: 2,
-      url: 'https://picsum.photos/200/300?random=1',
-    },
-    {
-      id: 3,
-      url: 'https://picsum.photos/200/300?random=1',
-    },
-    {
-      id: 4,
-      url: 'https://picsum.photos/200/300?random=1',
-    },
-  ];
+  @Prop() images!: [];
 }
 </script>
