@@ -27,7 +27,7 @@
         </ul>
       </li>
       <li>
-        <a href="https://github.com/johnnyrayalt" target="_blank" rel="noreferrer">github</a>
+        <a href="https://github.com/johnnyrayalt" target="_blank" rel="noreferrer">github();</a>
       </li>
     </ul>
   </nav>
