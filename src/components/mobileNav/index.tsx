@@ -141,37 +141,6 @@ const MobileNav: FC = (): JSX.Element => {
 						{expanded.main && (
 							<ul className='mobile-nav-ul'>
 								<li className='mobile-nav-li'>
-									<div className='mobile-link'>
-										<button onClick={() => handleChangeExpanded(EXPANDED_STATE_KEYS.WORKS)}
-											className='mobile-link mobile-btn'>
-											.works(↳)
-										</button>
-
-									</div>
-									{expanded.works && (
-										<ul className='mobile-sub-nav-ul'>
-											<li className='mobile-sub-nav-li'>
-												<NavLink
-													className='mobile-sub-nav-link mobile-link fade-in'
-													to='/works/art'
-													onClick={() => resetExpandedOnClick()}
-												>
-													.art()
-												</NavLink>
-											</li>
-											<li className='mobile-sub-nav-li'>
-												<NavLink
-													className='mobile-sub-nav-link mobile-link fade-in'
-													to='/works/professional'
-													onClick={() => resetExpandedOnClick()}
-												>
-													.professional()
-												</NavLink>
-											</li>
-										</ul>
-									)}
-								</li>
-								<li className='mobile-nav-li'>
 									<NavLink onClick={() => resetExpandedOnClick()} className='mobile-link' to='/about'>
 										.about()
 									</NavLink>

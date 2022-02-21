@@ -14,21 +14,11 @@ const Navigation: FC = (): JSX.Element => {
 
 	const handleChangeExpanded = (stateToChange: string): void => {
 		switch (stateToChange) {
-		case (EXPANDED_STATE_KEYS.WORKS):
-			return !expanded.works ? setExpanded({
-				works: true,
-				socials: expanded.socials,
-			}) : setExpanded({
-				works: false,
-				socials: expanded.socials,
-			})
 		case (EXPANDED_STATE_KEYS.SOCIALS):
 			return !expanded.socials ? setExpanded({
 				socials: true,
-				works: expanded.works,
 			}) : setExpanded({
 				socials: false,
-				works: expanded.works,
 			})
 		}
 	}
@@ -42,33 +32,6 @@ const Navigation: FC = (): JSX.Element => {
 			<div className='navigation-links-container'>
 				<nav>
 					<ul className='nav-ul'>
-						<li className='nav-li'>
-							<button onClick={() => handleChangeExpanded(EXPANDED_STATE_KEYS.WORKS)} className='link btn'>
-								.works(↳)
-							</button>
-							{expanded.works && (
-								<ul className='sub-nav-ul'>
-									<li className='sub-nav-li'>
-										<NavLink
-											className='sub-nav-link link'
-											to='/works/art'
-											onClick={() => resetExpandedOnClick()}
-										>
-											.art()
-										</NavLink>
-									</li>
-									<li className='sub-nav-li'>
-										<NavLink
-											className='sub-nav-link link'
-											to='/works/professional'
-											onClick={() => resetExpandedOnClick()}
-										>
-											.professional()
-										</NavLink>
-									</li>
-								</ul>
-							)}
-						</li>
 						<li className='nav-li'>
 							<NavLink className='link' to='/about'>
 								.about()
