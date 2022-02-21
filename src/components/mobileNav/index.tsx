@@ -72,17 +72,10 @@ const MobileNav: FC = (): JSX.Element => {
 	}
 
 	const handleOpenClose = (): void => {
-		if (eyeIsOpen) {
-			setEyeIsOpen(false)
-			handleLipOpenOrClose()
-			handleLashGroupAnimation()
-			handleRemovingIris()
-		} else {
-			setEyeIsOpen(true)
-			handleLipOpenOrClose()
-			handleLashGroupAnimation()
-			handleRemovingIris()
-		}
+		setEyeIsOpen(!eyeIsOpen)
+		handleLipOpenOrClose()
+		handleLashGroupAnimation()
+		handleRemovingIris()
 	}
 
 	const handleChangeExpanded = (stateToChange: string): void => {

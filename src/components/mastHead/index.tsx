@@ -11,7 +11,7 @@ const MastHead: FC = (): JSX.Element => {
 	return (
 		<div className='masthead'>
 			<Header />
-			{(width > 963) ? <Navigation /> : <MobileNav />}
+			{(width > 1000) ? <Navigation /> : <MobileNav />}
 		</div>
 	)
 }
