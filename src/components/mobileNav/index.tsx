@@ -10,17 +10,16 @@ import './styles.css'
 const MobileNav: FC = (): JSX.Element => {
 	const defaultExpanded: BooleanObj = {
 		main: false,
-		works: false,
 		socials: false,
 	}
 
 	const [expanded, setExpanded] = useState<BooleanObj>(defaultExpanded)
-	const [eyeIsOpenOrClosed, setEyeIsOpenOrClosed] = useState<boolean>(true)
+	const [eyeIsOpen, setEyeIsOpen] = useState<boolean>(true)
 
 	const handleLashGroupAnimation = (): void => {
 		gsap.fromTo('#lashGroup',
-			{ attr: { stroke: (eyeIsOpenOrClosed) ? eyeColor.white : eyeColor.coral } },
-			{ attr: { stroke: (eyeIsOpenOrClosed) ? eyeColor.coral : eyeColor.white } },
+			{ attr: { stroke: (eyeIsOpen) ? eyeColor.white : eyeColor.coral } },
+			{ attr: { stroke: (eyeIsOpen) ? eyeColor.coral : eyeColor.white } },
 		)
 
 		for (const lashGroup in lashGroups) {
@@ -33,14 +32,14 @@ const MobileNav: FC = (): JSX.Element => {
 				`#${lashGroup}`,
 				{
 					attr: {
-						y1: (eyeIsOpenOrClosed) ? y1Start : y1End,
-						y2: (eyeIsOpenOrClosed) ? y2Start : y2End,
+						y1: (eyeIsOpen) ? y1Start : y1End,
+						y2: (eyeIsOpen) ? y2Start : y2End,
 					},
 				},
 				{
 					attr: {
-						y1: (eyeIsOpenOrClosed) ? y1End : y1Start,
-						y2: (eyeIsOpenOrClosed) ? y2End : y2Start,
+						y1: (eyeIsOpen) ? y1End : y1Start,
+						y2: (eyeIsOpen) ? y2End : y2Start,
 					},
 				})
 		}
@@ -49,8 +48,8 @@ const MobileNav: FC = (): JSX.Element => {
 	const handleRemovingIris = (): void => {
 		gsap.fromTo(
 			'#eyeballGroup',
-			{ attr: { opacity: (eyeIsOpenOrClosed) ? 1 : 0 } },
-			{ attr: { opacity: (eyeIsOpenOrClosed) ? 0 : 1 } },
+			{ attr: { opacity: (eyeIsOpen) ? 1 : 0 } },
+			{ attr: { opacity: (eyeIsOpen) ? 0 : 1 } },
 		)
 	}
 
@@ -59,27 +58,27 @@ const MobileNav: FC = (): JSX.Element => {
 			topLid.id,
 			{
 				attr: {
-					d: (eyeIsOpenOrClosed) ? topLid.start : topLid.end,
-					stroke: (eyeIsOpenOrClosed) ? eyeColor.white : eyeColor.coral,
+					d: (eyeIsOpen) ? topLid.start : topLid.end,
+					stroke: (eyeIsOpen) ? eyeColor.white : eyeColor.coral,
 				},
 			},
 			{
 				attr: {
-					d: (eyeIsOpenOrClosed) ? topLid.end : topLid.start,
-					stroke: (eyeIsOpenOrClosed) ? eyeColor.coral : eyeColor.white,
+					d: (eyeIsOpen) ? topLid.end : topLid.start,
+					stroke: (eyeIsOpen) ? eyeColor.coral : eyeColor.white,
 				},
 			},
 		)
 	}
 
 	const handleOpenClose = (): void => {
-		if (eyeIsOpenOrClosed) {
-			setEyeIsOpenOrClosed(false)
+		if (eyeIsOpen) {
+			setEyeIsOpen(false)
 			handleLipOpenOrClose()
 			handleLashGroupAnimation()
 			handleRemovingIris()
 		} else {
-			setEyeIsOpenOrClosed(true)
+			setEyeIsOpen(true)
 			handleLipOpenOrClose()
 			handleLashGroupAnimation()
 			handleRemovingIris()
@@ -91,32 +90,18 @@ const MobileNav: FC = (): JSX.Element => {
 		case (EXPANDED_STATE_KEYS.MAIN):
 			return !expanded.main ? setExpanded({
 				main: true,
-				works: false,
 				socials: false,
 			}) : setExpanded({
 				main: false,
-				works: false,
 				socials: false,
-			})
-		case (EXPANDED_STATE_KEYS.WORKS):
-			return !expanded.works ? setExpanded({
-				works: true,
-				main: true,
-				socials: expanded.socials,
-			}) : setExpanded({
-				works: false,
-				main: expanded.main,
-				socials: expanded.socials,
 			})
 		case (EXPANDED_STATE_KEYS.SOCIALS):
 			return !expanded.socials ? setExpanded({
 				socials: true,
 				main: true,
-				works: expanded.works,
 			}) : setExpanded({
 				socials: false,
 				main: expanded.main,
-				works: expanded.works,
 			})
 		}
 	}

@@ -6,7 +6,6 @@ import './styles.css'
 
 const Navigation: FC = (): JSX.Element => {
 	const defaultExpanded: BooleanObj = {
-		works: false,
 		socials: false,
 	}
 
@@ -15,11 +14,9 @@ const Navigation: FC = (): JSX.Element => {
 	const handleChangeExpanded = (stateToChange: string): void => {
 		switch (stateToChange) {
 		case (EXPANDED_STATE_KEYS.SOCIALS):
-			return !expanded.socials ? setExpanded({
-				socials: true,
-			}) : setExpanded({
-				socials: false,
-			})
+			return !expanded.socials
+				? setExpanded({ socials: true })
+				: setExpanded({ socials: false })
 		}
 	}
 
@@ -33,7 +30,7 @@ const Navigation: FC = (): JSX.Element => {
 				<nav>
 					<ul className='nav-ul'>
 						<li className='nav-li'>
-							<NavLink className='link' to='/about'>
+							<NavLink onClick={() => resetExpandedOnClick()} className='link' to='/about'>
 								.about()
 							</NavLink>
 						</li>

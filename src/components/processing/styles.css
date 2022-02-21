@@ -1,0 +1,7 @@
+canvas {
+    pointer-events: none;
+    touch-action: none;
+    overflow: scroll;
+    position: absolute;
+    -webkit-overflow-scrolling: touch;
+}

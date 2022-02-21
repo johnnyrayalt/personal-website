@@ -3,7 +3,6 @@
 }
 
 .mobile-closed-nav, .mobile-open-nav {
-    opacity: 93%;
     transition-duration: 0.3s;
 }
 

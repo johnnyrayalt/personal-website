@@ -3,6 +3,7 @@ import p5Types from 'p5'
 import React, { FC, useEffect, useRef } from 'react'
 import { Boundary } from '../../utils/rayCasting/Boundary'
 import { Particle } from '../../utils/rayCasting/Particle'
+import './styles.css'
 
 const Processing: FC = (): JSX.Element => {
 	const sceneWidth = window.innerWidth
